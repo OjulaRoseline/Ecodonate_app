@@ -126,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# This tells Django where to look for static files inside your app
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 
 # =====================================================
 # M-Pesa Daraja API Configuration
