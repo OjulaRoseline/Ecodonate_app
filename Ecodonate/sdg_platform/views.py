@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required # Useful for the M-Pesa views
-from .models import SDGProject, Donation
+from .models import SDGProject, Donation, SDG_CHOICES
 from .forms import DonationForm
 import requests
 import base64
