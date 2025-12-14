@@ -11,7 +11,7 @@ Eco-Donate is a Django-based web platform that allows users to create, browse, a
 - **User Authentication** → Register, login, and logout (Django built-in)
 - **CRUD for Projects** → Create, read, update, and delete SDG-aligned projects (only creators can edit/delete)
 - **Project Browsing** → List view with filters, progress bars, and responsive cards
-- **M-Pesa Payment Simulation** → Fake STK Push flow: Enter phone number → "Confirm payment" → Donation recorded and project funded amount updated
+- **M-Pesa Payment Simulation** → STK Push flow: Enter phone number → "Confirm payment" → Donation recorded and project funded amount updated
 - **SDG Integration** → Each project linked to one of the 17 UN SDGs
 - **Responsive Design** → Bootstrap 5-powered UI for mobile/desktop
 - **Real-time Progress Tracking** → Visual progress bars showing donation percentages toward project goals
