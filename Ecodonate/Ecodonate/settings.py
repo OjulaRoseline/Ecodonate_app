@@ -9,23 +9,32 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--*liic7v!@i#**o)=8+!t*irv(b@#e$tq&$cvbgy^rmgynre&f'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--*liic7v!@i#**o)=8+!t*irv(b@#e$tq&$cvbgy^rmgynre&f')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    '.ngrok.io', 
+    '.ngrok-free.app',
+    'mpesa-sdg.dev.ngrok.app'  # Replace with your actual custom domain
+]
 
 
 # Application definition
@@ -55,7 +64,7 @@ ROOT_URLCONF = 'Ecodonate.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,3 +125,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# =====================================================
+# M-Pesa Daraja API Configuration
+# =====================================================
+# These credentials should be stored in your .env file for security
+
+CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
+CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+BUSINESS_SHORT_CODE = os.environ.get('BUSINESS_SHORT_CODE')
+LIPA_NA_MPESA_PASSKEY = os.environ.get('LIPA_NA_MPESA_PASSKEY')
+PAYMENT_CALLBACK_URL = os.environ.get('PAYMENT_CALLBACK_URL')
+
+# Default value for local testing
+if not PAYMENT_CALLBACK_URL:
+    PAYMENT_CALLBACK_URL = 'http://127.0.0.1:8000/api/mpesa/callback/'
