@@ -65,8 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <strong>KSh {{ project.current_amount }}</strong>
                             <span>of KSh {{ project.target_amount }}</span>
                         </div>
-                        
-                        <a href="{% url 'project_detail' pk=project.pk %}" class="btn btn-success w-100">View & Donate</a>
+                        <p>
+                Raised: KES {{ project.current_amount }} / Target: KES {{ project.target_amount }}
+            </p>
+            <a href="{% url 'project_detail' pk=project.pk %}">View Details / Donate</a>
                     </div>
                 </div>
             </div>

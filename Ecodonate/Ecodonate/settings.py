@@ -9,6 +9,25 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR is usually defined here:
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# --- Later in the file, where you define your variables ---
+
+# Daraja API Credentials (Read them from the environment)
+CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
+CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+BUSINESS_SHORT_CODE = os.environ.get('BUSINESS_SHORT_CODE')
+LIPA_NA_MPESA_PASSKEY = os.environ.get('LIPA_NA_MPESA_PASSKEY')
+PAYMENT_CALLBACK_URL = os.environ.get('PAYMENT_CALLBACK_URL')
 
 from pathlib import Path
 
@@ -55,13 +74,14 @@ ROOT_URLCONF = 'Ecodonate.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },

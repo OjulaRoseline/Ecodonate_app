@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Confirm M-Pesa Payment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center shadow-lg border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <i class="fas fa-mobile-alt me-2"></i> M-Pesa STK Push Simulation
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-success">Confirm Payment for: {{ project.title }}</h5>
+                    <p class="card-text">
+                        You are about to donate **KSh {{ amount|floatformat:2 }}** using **{{ phone_number }}**.
+                    </p>
+                    <p class="text-danger small">
+                        In a real scenario, this is where you would receive a prompt on your phone.
+                    </p>
+                    <hr>
+                    
+                    <form method="POST" action="{% url 'donate_complete' %}" class="d-inline me-3">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="pay">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Simulate: PAY NOW (Success)
+                        </button>
+                    </form>
+
+                    <a href="{% url 'donate_complete' %}?status=cancel" class="btn btn-outline-danger btn-lg">
+                        Simulate: CANCEL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
