@@ -11,6 +11,69 @@ from datetime import datetime
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 import json
+
+# --- View: Display all projects ---
+def project_list(request):
+    """Displays a list of all SDG projects."""
+    projects = SDGProject.objects.all()
+    context = {'projects': projects}
+    return render(request, 'sdg_platform/project_list.html', context)
+
+# --- View: Display a single project with donation form ---
+def project_detail(request):
+    """Displays a single project and its donation form."""
+    pk = request.GET.get('pk') or request.POST.get('pk')
+    if not pk:
+        return redirect('project_list')
+    
+    project = get_object_or_404(SDGProject, pk=pk)
+    form = DonationForm()
+    context = {
+        'project': project,
+        'form': form,
+        'sdg_choices': dict(SDGProject._meta.get_field('sdg_goal').choices)
+    }
+    return render(request, 'sdg_platform/project_details.html', context)
+
+# --- Main Project Views ---
+
+def project_list(request):
+    """Display all SDG projects with their funding progress."""
+    projects = SDGProject.objects.all()
+    context = {'projects': projects}
+    return render(request, 'sdg_platform/project_list.html', context)
+
+
+def project_detail(request, pk):
+    """Display details of a specific project and donation form."""
+    project = get_object_or_404(SDGProject, pk=pk)
+    form = DonationForm()
+    context = {
+        'project': project,
+        'form': form,
+        'sdg_choices': dict(SDG_CHOICES)
+    }
+    return render(request, 'sdg_platform/project_details.html', context)
+
+
+def donate_start(request, pk):
+    """Starts the donation process by storing form data in session."""
+    project = get_object_or_404(SDGProject, pk=pk)
+    
+    if request.method == 'POST':
+        form = DonationForm(request.POST)
+        if form.is_valid():
+            # Store donation data in session for confirmation
+            request.session['donation_data'] = {
+                'project_id': project.pk,
+                'amount': float(form.cleaned_data['amount']),
+                'phone_number': form.cleaned_data['phone_number']
+            }
+            return redirect('donate_confirm')
+    
+    return redirect('project_detail', pk=project.pk)
+
+
 # --- Helper Functions for Daraja API ---
 
 def get_mpesa_access_token():
