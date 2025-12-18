@@ -20,13 +20,9 @@ def project_list(request):
     return render(request, 'sdg_platform/project_list.html', context)
 
 # --- View: Display a single project with donation form ---
-def project_detail(request):
-    """Displays a single project and its donation form."""
-    pk = request.GET.get('pk') or request.POST.get('pk')
-    if not pk:
-        return redirect('project_list')
-    
+def project_detail(request,pk):
     project = get_object_or_404(SDGProject, pk=pk)
+    return render(request, 'sdg_platform/project_detail.html', {'project': project})
     form = DonationForm()
     context = {
         'project': project,
@@ -321,3 +317,8 @@ def mpesa_callback(request):
             return HttpResponse(status=500) # Server Error
     
     return HttpResponse(status=405) # Method Not Allowed for GET requests
+def about(request):
+    return render(request, 'sdg_platform/about.html')
+
+def contact(request):
+    return render(request, 'sdg_platform/contact.html')

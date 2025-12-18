@@ -27,10 +27,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-<div class="container mt-5">
-    <h1 class="text-center mb-4">SDG-Aligned Community Projects</h1>
-    <p class="text-center lead mb-5">Support sustainable initiatives that make a real difference.</p>
-
+<div class="py-5 mb-5" style="background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); color: white;">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold" style="font-family: 'Georgia', serif;">SDG-Aligned Community Projects</h1>
+        <p class="lead opacity-75">Support sustainable initiatives that make a real difference in Kenya.</p>
+        <div class="mt-4">
+            <span class="badge rounded-pill bg-light text-dark px-3 py-2">#GlobalGoals</span>
+            <span class="badge rounded-pill bg-light text-dark px-3 py-2 mx-2">#EcoDonate</span>
+            <span class="badge rounded-pill bg-light text-dark px-3 py-2">#KenyaForward</span>
+        </div>
+    </div>
+    <hr>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for project in projects %}
         <div class="col">

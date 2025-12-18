@@ -11,6 +11,13 @@ class SDGProjectAdmin(admin.ModelAdmin):
     list_filter = ('sdg_goal', 'creator')
     # Search bar functionality
     search_fields = ('title', 'description')
+    # 2. Organize the edit form
+    fields = ['title', 'description', 'sdg_goal','image_url', 'target_amount', 'current_amount', 'creator']
+
+    # 3. Optional: This helper function shows a "Yes/No" icon in the list view for images
+    @admin.display(boolean=True, description='Image')
+    def has_image(self, obj):
+        return bool(obj.image)
 
 @admin.register(Donation)
 class DonationAdmin(admin.ModelAdmin):

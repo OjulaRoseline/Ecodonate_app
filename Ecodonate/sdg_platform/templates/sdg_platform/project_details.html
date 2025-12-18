@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card-body">
                     <h1 class="card-title">{{ project.title }}</h1>
                     <p class="text-muted small">
-                        SDG {{ project.sdg_goal }} • Goal: {{ sdg_choices|get_item:project.sdg_goal }} • Created by {{ project.creator.username }}
+                        SDG {{ project.sdg_goal }} • Created by {{ project.creator.username }}
                     </p>
                     <hr>
                     <p class="lead">{{ project.description|linebreaksbr }}</p>

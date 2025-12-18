@@ -26,6 +26,7 @@ SDG_CHOICES = (
 # --- 1. SDGProject Model (The Main Project Blueprint) ---
 class SDGProject(models.Model):
     title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='project_images/', blank=True, null=True)
     description = models.TextField()
     # Uses the predefined choices for filtering and consistency
     sdg_goal = models.IntegerField(choices=SDG_CHOICES, default=1)

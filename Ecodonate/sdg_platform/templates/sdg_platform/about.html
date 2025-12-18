@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: #1b4332; color: white; padding: 80px 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-family: 'Georgia', serif; font-size: 3rem; font-weight: bold;">About EcoDonate</h1>
+        <p class="lead" style="max-width: 800px; margin: 20px auto; color: #d8f3dc;">
+            Bridging the gap between global goals and local action through transparent, community-driven crowdfunding.
+        </p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 style="color: #1b4332; font-weight: bold;">Our Mission</h2>
+            <p>EcoDonate was founded with a single vision: to empower Kenyans to contribute directly to the Sustainable Development Goals (SDGs). We believe that small contributions, when channeled into well-managed community projects, can solve our greatest challenges—from poverty to climate change.</p>
+            <p>Our platform ensures that every KES donated goes directly toward the project’s targets, with real-time progress tracking for every donor.</p>
+        </div>
+        <div class="col-md-6">
+            <div style="background: #d8f3dc; height: 300px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #1b4332;">
+                <i class="fas fa-seedling fa-5x"></i>
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+     alt="Community Impact" 
+     style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="text-center mb-5">
+        <h2 style="color: #1b4332;">Why Choose EcoDonate?</h2>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4 text-center">
+            <div class="p-4 border-0 shadow-sm card h-100" style="background: #f9fdf9;">
+                <h4 style="color: #2d6a4f;">Transparency</h4>
+                <p>Track exactly how much has been raised and see the impact of your donation in real-time.</p>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="p-4 border-0 shadow-sm card h-100" style="background: #f9fdf9;">
+                <h4 style="color: #2d6a4f;">SDG Aligned</h4>
+                <p>Every project is tagged with a specific UN Sustainable Development Goal for clear impact reporting.</p>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="p-4 border-0 shadow-sm card h-100" style="background: #f9fdf9;">
+                <h4 style="color: #2d6a4f;">Local Support</h4>
+                <p>We prioritize grassroots initiatives that understand the unique needs of Kenyan communities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
