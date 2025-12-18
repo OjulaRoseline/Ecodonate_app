@@ -215,9 +215,9 @@ PAYMENT_CALLBACK_URL=http://127.0.0.1:8000/api/mpesa/callback/
 
 ---
 
-## Future Improvements 🚀
+## Future Improvements 
 
-- [x] **Real M-Pesa Integration** → ✅ Connected to live M-Pesa Daraja API (Sandbox & Production Ready)
+- [x] **Real M-Pesa Integration** → Connected to live M-Pesa Daraja API (Sandbox & Production Ready)
 - [ ] **Email Notifications** → Send confirmation emails for donations
 - [ ] **Advanced Filtering** → Filter projects by SDG, funding status, date
 - [ ] **User Profiles** → Showcase creator achievements and impact
@@ -254,7 +254,7 @@ This project is licensed under the **MIT License** — see the LICENSE file for 
 
 - **Repository:** [GitHub - Ecodonate_app](https://github.com/OjulaRoseline/Ecodonate_app)
 - **Issues:** Report bugs or request features via GitHub Issues
-- **Email:** [Your contact email]
+- **Email:** roselineakinyi587@gmail.com
 
 ---
 
