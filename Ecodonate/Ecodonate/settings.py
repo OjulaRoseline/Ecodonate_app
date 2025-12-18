@@ -28,13 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--*liic7v!@i#**o)=8+!t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = [
-    'localhost', 
-    '127.0.0.1', 
-    '.ngrok.io', 
-    '.ngrok-free.app',
-    'mpesa-sdg.dev.ngrok.app'  # Replace with your actual custom domain
-]
+ALLOWED_HOSTS = ["*"]  # Will be restricted to Render domain in production
 
 
 # Application definition
@@ -51,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise for static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,7 +119,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # =====================================================
